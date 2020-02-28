@@ -35,6 +35,15 @@ class RingBuffer:
         list_buffer_contents = []
 
         # TODO: Your code here
+                
+        # start at head of DLL, save head node to variable
+        node = self.storage.head
+        # so long as node is not none (this would imply that we've reached the end of the list because tail.next will be none), iterate over DLL 
+        while node:
+            # append value of current node to list_buffer_contents on each iteration
+            list_buffer_contents.append(node.value)
+            # set node = next node in DLL 
+            node = node.next
 
         return list_buffer_contents
 
