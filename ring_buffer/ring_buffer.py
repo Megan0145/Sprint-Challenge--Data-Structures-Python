@@ -52,10 +52,23 @@ class RingBuffer:
 
 class ArrayRingBuffer:
     def __init__(self, capacity):
-        pass
+        self.capacity = capacity
+        # initialize current_oldest to be 0, 
+        # much like above function using DLL where current is initialized to head of list, current is initalized to first element in list here
+        self.current_oldest = 0
+        # initialize storage to be list containing None * capacity
+        self.storage = [None] * capacity
 
     def append(self, item):
-        pass
+        # if at max capacity, the index of the current_oldest element will be equal to the capacity
+        if self.current_oldest == self.capacity:
+            # set it to first element in list again
+            self.current_oldest = 0
+        # overwrite the value of the current_oldest element with item   
+        self.storage[self.current_oldest] = item
+        # next oldest element will be one to the RHS of current_oldest -> increment current_oldest by one 
+        self.current_oldest  += 1  
 
     def get(self):
-        pass
+        # only return items in storage where value is not None
+         return [item for item in self.storage if item is not None]
