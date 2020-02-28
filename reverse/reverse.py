@@ -44,4 +44,21 @@ class LinkedList:
 
   def reverse_list(self):
     # TO BE COMPLETED
-    pass
+
+    # start off at head of the list, declare variable to hold current node and initialize it to the head node
+    cur_node = self.head
+    # declare variable to hold the previous node and initialize it to None
+    prev_node = None
+    # iterate over the list so long as the current node is not None (this denotes that we've reached the end of the list because tail.next will be None)
+    while cur_node: 
+      # save the value of the current nodes 'next' to a temp next variable
+      next_node = cur_node.get_next()     
+      # set the current nodes 'next' to the value of prev 
+      cur_node.set_next(prev_node)
+      # set the value of prev equal to the value of the current node
+      prev_node = cur_node
+      # finally set the value of the current node equal to the value we saved in the temp 'next' variable
+      cur_node = next_node
+    # when we get to the very end of the list (cur_node is None) prev_node will be equal to original tail of DLL
+    # set head == prev_node  
+    self.head = prev_node      
