@@ -39,7 +39,6 @@ class LinkedListTests(unittest.TestCase):
     self.assertEqual(self.list.head.value, 1)
     self.assertEqual(self.list.head.get_next().value, 2)
     self.assertEqual(self.list.head.get_next().get_next().value, 3)
-    
 
  
 
